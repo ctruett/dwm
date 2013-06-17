@@ -35,9 +35,9 @@ static const Bool clicktofocus  = True;  /* Change focus only on click */
 
 #include "tcl.h"
 static const Layout layouts[] = {
-	{ "|||",      tcl },
 	{ "[]=",      tile }, 
-	{ "[M]",      monocle },
+	{ "|||",      tcl },
+	{ "[ ]",      monocle },
 	{ "><>",      NULL },
 };
 
