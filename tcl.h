@@ -19,7 +19,7 @@ tcl(Monitor * m)
 	resize(c,
 	       n < 3 ? m->wx : m->wx + sw,
 	       m->wy,
-	       n == 1 ? m->ww : mw - bdw,
+	       n == 1 ? m->ww - bdw : mw - bdw,
 	       m->wh - bdw,
 	       False);
 
