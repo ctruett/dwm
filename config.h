@@ -35,11 +35,10 @@ static const Bool clicktofocus  = True;  /* Change focus only on click */
 
 #include "tcl.h"
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "|||",      tcl },     /* first entry is default */
-	// { "[]=",      tile }, /* first entry is default */
+	{ "|||",      tcl },
+	{ "[]=",      tile }, 
 	{ "[M]",      monocle },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "><>",      NULL },
 };
 
 /* key definitions */
@@ -75,9 +74,9 @@ static Key keys[] = {
 	// { MODKEY,                              XK_f,       togglemax,         {0} },
 	// { MODKEY,                              XK_c,       centerwindow,      {0} },
 	{ MODKEY,                              XK_t,       setlayout,         {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,                    XK_t,       setlayout,         {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[2]} },
 	// { MODKEY,                              XK_b,       setlayout,         {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[1]} },
-	// { MODKEY,                              XK_b,       setlayout,         {.v = &layouts[2]} },
 	// { MODKEY,                              XK_f,       setlayout,         {.v = &layouts[3]} },
 
 	{ MODKEY,                              XK_l,       setmfact,          {.f = +0.025} },
