@@ -30,7 +30,6 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact        = 0.6;   /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;     /* number of clients in master area */
-static const unsigned int gappx = 0;     /* gap width */
 static const Bool resizehints   = False; /* True means respect size hints in tiled resizals */
 static const Bool clicktofocus  = True;  /* Change focus only on click */
 
@@ -47,14 +46,14 @@ static const Layout layouts[] = {
 #define MODKEY Mod1Mask
 #define CTRLKEY ControlMask
 #define TAGKEYS(KEY,TAG) \
-{ MODKEY,                        KEY,  view      ,  {.ui = 1 << TAG} },  \
-{ MODKEY|ShiftMask,              KEY,  toggleview,  {.ui = 1 << TAG} },  \
+{ MODKEY,                        KEY,  toggleview,  {.ui = 1 << TAG} },  \
+{ MODKEY|ShiftMask,              KEY,  view,        {.ui = 1 << TAG} },  \
 { CTRLKEY|ShiftMask,             KEY,  tag,         {.ui = 1 << TAG} },  \
-{ MODKEY|ControlMask|ShiftMask,  KEY,  toggletag,   {.ui = 1 << TAG} },
+{ MODKEY|ControlMask|ShiftMask,  KEY,  toggletag,   {.ui = 1 << TAG} },  
 
 /* commands */
 static const char scratchpadname[] = "TODO";
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]      = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]       = { "urxvt", NULL };
 static const char *browse[]        = { "thunar", NULL };
 static const char *vim[]           = { "urxvt", "-e", "vim", NULL };
