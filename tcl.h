@@ -31,7 +31,7 @@ tcl(Monitor * m)
 
 	if (n > 1)
 	{
-		x = m->wx + ((n > 1) ? mw + sw : mw);
+		x = m->wx + ((n > 1) ? mw + sw + bdw : mw);
 		y = m->wy;
 		h = m->wh / (n / 2);
 

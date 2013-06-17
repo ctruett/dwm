@@ -2,12 +2,12 @@
 
 /* appearance */
 static const char font[] ="-*-codec monospaced-*-*-*-*-*-*-*-*-*-*-*-";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#ff0000";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char normbordercolor[] = "#4C78A4";
+static const char normbgcolor[]     = "#080808";
+static const char normfgcolor[]     = "#888888";
+static const char selbordercolor[]  = "#880000";
+static const char selbgcolor[]      = "#080808";
+static const char selfgcolor[]      = "#ffffff";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
@@ -28,10 +28,11 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact       = 0.6;   /* factor of master area size [0.05..0.95] */
-static const int nmaster       = 1;     /* number of clients in master area */
-static const Bool resizehints  = False; /* True means respect size hints in tiled resizals */
-static const Bool clicktofocus = True;  /* Change focus only on click */
+static const float mfact        = 0.6;   /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;     /* number of clients in master area */
+static const unsigned int gappx = 0;     /* gap width */
+static const Bool resizehints   = False; /* True means respect size hints in tiled resizals */
+static const Bool clicktofocus  = True;  /* Change focus only on click */
 
 #include "tcl.h"
 static const Layout layouts[] = {

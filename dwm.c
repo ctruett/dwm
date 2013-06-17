@@ -288,6 +288,9 @@ static DC dc;
 static Monitor *mons = NULL, *selmon = NULL;
 static Window root;
 
+static int globalborder;
+static int globalborder;
+
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
@@ -726,6 +729,7 @@ drawbar(Monitor *m) {
 	int x;
 	unsigned int i, occ = 0, urg = 0;
 	unsigned long *col;
+	unsigned int a = 0, s = 0;
 	Client *c;
 
 	for(c = m->clients; c; c = c->next) {
@@ -741,6 +745,14 @@ drawbar(Monitor *m) {
 		drawsquare(m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 		           occ & 1 << i, urg & 1 << i, col);
 		dc.x += dc.w;
+	}
+	if(m->lt[m->sellt]->arrange == monocle) {
+		for(a = 0, s = 0, c= nexttiled(m->clients); c; c= nexttiled(c->next), a++)
+			if(c == m->stack)
+				s = a;
+		if(!s && a)
+			s = a;
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d/%d]", s, a);
 	}
 	dc.w = blw = TEXTW(m->ltsymbol);
 	drawtext(m->ltsymbol, dc.norm, False);
@@ -1206,14 +1218,8 @@ maprequest(XEvent *e) {
 
 void
 monocle(Monitor *m) {
-	unsigned int n = 0;
 	Client *c;
 
-	for(c = m->clients; c; c = c->next)
-		if(ISVISIBLE(c))
-			n++;
-	if(n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for(c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, False);
 }
@@ -1425,10 +1431,16 @@ void
 resizeclient(Client *c, int x, int y, int w, int h) {
 	XWindowChanges wc;
 
-	c->oldx = c->x; c->x = wc.x = x;
-	c->oldy = c->y; c->y = wc.y = y;
-	c->oldw = c->w; c->w = wc.width = w;
-	c->oldh = c->h; c->h = wc.height = h;
+	if(c->isfloating || selmon->lt[selmon->sellt]->arrange == NULL) { globalborder = 0 ; }
+	else {
+		if (selmon->lt[selmon->sellt]->arrange == monocle) { globalborder = 0 - borderpx ; }
+		else { globalborder =  gappx ; }
+	}
+
+	c->oldx = c->x; c->x = wc.x = x + globalborder;
+	c->oldy = c->y; c->y = wc.y = y + globalborder;
+	c->oldw = c->w; c->w = wc.width = w - 2 * globalborder;
+	c->oldh = c->h; c->h = wc.height = h - 2 * globalborder;
 	wc.border_width = c->bw;
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
