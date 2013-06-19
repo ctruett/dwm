@@ -2,10 +2,10 @@
 
 /* appearance */
 static const char font[]            = "Cousine:size=10";
-static const char normbordercolor[] = "#666666";
+static const char normbordercolor[] = "#38424A";
 static const char normbgcolor[]     = "#080808";
 static const char normfgcolor[]     = "#888888";
-static const char selbordercolor[]  = "#ff0000";
+static const char selbordercolor[]  = "#DE3E4F";
 static const char selbgcolor[]      = "#080808";
 static const char selfgcolor[]      = "#ffffff";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
