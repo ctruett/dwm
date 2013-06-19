@@ -48,7 +48,7 @@ tcl(Monitor * m)
 			       False);
 
 			if (h != m->wh)
-				y = c->y + HEIGHT(c);
+				y = c->y + HEIGHT(c) + 2 * globalborder;
 		}
 	}
 
@@ -69,6 +69,6 @@ tcl(Monitor * m)
 		       False);
 
 		if (h != m->wh)
-			y = c->y + HEIGHT(c);
+			y = c->y + HEIGHT(c) + 2 * globalborder;
 	}
 }

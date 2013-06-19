@@ -17,19 +17,26 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	tcl.h
 	dwm.c
 	config.h
+	bstack.c
+	bstackhoriz.c
 	dwm.desktop)
 
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-	'7d999ad5ec14aaed2b31e5a3110f33fb'
-	'aae48ee95b7f2644afc8fd1fc8b072ab'
-	'b3631ba194f624d82d00fdabad45dd9a'
-	'939f403a71b6e85261d09fc3412269ee')
+ 			 	 'bfec7cc5ce8269f391b0cd5d1df6f2ef'
+ 			 	 '458a6cefdde9a4eecd6b86584a68eea9'
+ 			 	 '2efee6a2b01b4659fbfd49fda6e3fb11'
+ 			 	 '362e07f0f042875b84d7739d9d8855c4'
+ 			 	 'c3c7d80ecfd8d8f46145462f4b1e7add'
+ 			 	 '939f403a71b6e85261d09fc3412269ee')
+
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h config.h
   cp $srcdir/tcl.h tcl.h
   cp $srcdir/dwm.c dwm.c
+  cp $srcdir/bstack.c bstack.c
+  cp $srcdir/bstackhoriz.c bstackhoriz.c
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
