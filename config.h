@@ -2,14 +2,15 @@
 
 /* appearance */
 static const char font[] ="-*-codec monospaced-*-*-*-*-*-*-*-*-*-*-*-";
-static const char normbordercolor[] = "#4C78A4";
+static const char normbordercolor[] = "#666666";
 static const char normbgcolor[]     = "#080808";
 static const char normfgcolor[]     = "#888888";
-static const char selbordercolor[]  = "#880000";
+static const char selbordercolor[]  = "#ff0000";
 static const char selbgcolor[]      = "#080808";
 static const char selfgcolor[]      = "#ffffff";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappx     = 3;
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
@@ -20,24 +21,25 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	// { NULL,           NULL,         NULL,       0,     True,   -1 },
 	{ "NULL",         "Dialog",     NULL,       0,     True,   -1 },
-	{ "Firefox",      "Navigator",  NULL,       1<<1,  False,  -1 },
-	{ "Firefox",      "DTA",        NULL,       1<<1,  False,  -1 },
-	{ "Qjackctl",     NULL,         NULL,       0,     True,   -1 },
-	{ "Xchat",        NULL,         NULL,       1<<2,  False,  -1 },
-	{ "Thunderbird",  NULL,         NULL,       1<<3,  False,  -1 },
+	// { "Firefox",      "Navigator",  NULL,       1<<1,  False,  -1 },
+	// { "Firefox",      "DTA",        NULL,       1<<1,  False,  -1 },
+	// { "Qjackctl",     NULL,         NULL,       0,     True,   -1 },
+	// { "Xchat",        NULL,         NULL,       1<<2,  False,  -1 },
+	// { "Thunderbird",  NULL,         NULL,       1<<3,  False,  -1 },
 };
 
 /* layout(s) */
-static const float mfact        = 0.6;   /* factor of master area size [0.05..0.95] */
+static const float mfact        = 0.7;   /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;     /* number of clients in master area */
 static const Bool resizehints   = False; /* True means respect size hints in tiled resizals */
 static const Bool clicktofocus  = True;  /* Change focus only on click */
 
 #include "tcl.h"
+#include "bstack.c"
 static const Layout layouts[] = {
-	{ "[]=",      tile }, 
-	{ "|||",      tcl },
+	{ "TTT",      bstack }, 
 	{ "[ ]",      monocle },
+	{ "|||",      tcl },
 	{ "><>",      NULL },
 };
 
@@ -74,8 +76,8 @@ static Key keys[] = {
 	// { MODKEY,                              XK_f,       togglemax,         {0} },
 	// { MODKEY,                              XK_c,       centerwindow,      {0} },
 	{ MODKEY,                              XK_t,       setlayout,         {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,                    XK_t,       setlayout,         {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,                    XK_t,       setlayout,         {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[1]} },
 	// { MODKEY,                              XK_b,       setlayout,         {.v = &layouts[1]} },
 	// { MODKEY,                              XK_f,       setlayout,         {.v = &layouts[3]} },
 
