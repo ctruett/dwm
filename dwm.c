@@ -1776,7 +1776,7 @@ tile(Monitor *m) {
 		else {
 			h = (m->wh - ty) / (n - i);
 			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), False);
-			ty += HEIGHT(c);
+			ty += HEIGHT(c) + 2 * globalborder;
 		}
 }
 

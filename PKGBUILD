@@ -19,18 +19,17 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
 	bstack.c
 	bstackhoriz.c
+	config.mk
 	dwm.desktop)
 
-md5sums=(
-	'8bb00d4142259beb11e13473b81c0857'
-	'e92edfb03207d6b7d51f0c6ae6237fa9'
-	'acc4bc2a801949613272193ddc528a2e'
-	'bc810c6907dd06f7e1f98a80fc611501'
-	'9064c678b6f18094611448ba29f87bff'
-	'c3c7d80ecfd8d8f46145462f4b1e7add'
-	'939f403a71b6e85261d09fc3412269ee')
-
-
+md5sums=('8bb00d4142259beb11e13473b81c0857'
+         'e92edfb03207d6b7d51f0c6ae6237fa9'
+         '8c977d65d269303390894cefe21a0c60'
+         'a0c8ca442b2329325c9f5d404927fcc4'
+         '9064c678b6f18094611448ba29f87bff'
+         'c3c7d80ecfd8d8f46145462f4b1e7add'
+         '1fe59db71b0dff73029a8da6d2115c4a'
+         '939f403a71b6e85261d09fc3412269ee')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -39,6 +38,7 @@ build() {
   cp $srcdir/dwm.c dwm.c
   cp $srcdir/bstack.c bstack.c
   cp $srcdir/bstackhoriz.c bstackhoriz.c
+  cp $srcdir/config.mk config.mk
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
