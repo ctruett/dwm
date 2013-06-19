@@ -21,13 +21,15 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	bstackhoriz.c
 	dwm.desktop)
 
-md5sums=('8bb00d4142259beb11e13473b81c0857'
- 			 	 'bfec7cc5ce8269f391b0cd5d1df6f2ef'
- 			 	 '458a6cefdde9a4eecd6b86584a68eea9'
- 			 	 '2efee6a2b01b4659fbfd49fda6e3fb11'
- 			 	 '362e07f0f042875b84d7739d9d8855c4'
- 			 	 'c3c7d80ecfd8d8f46145462f4b1e7add'
- 			 	 '939f403a71b6e85261d09fc3412269ee')
+md5sums=(
+	'8bb00d4142259beb11e13473b81c0857'
+	'e92edfb03207d6b7d51f0c6ae6237fa9'
+	'acc4bc2a801949613272193ddc528a2e'
+	'bc810c6907dd06f7e1f98a80fc611501'
+	'9064c678b6f18094611448ba29f87bff'
+	'c3c7d80ecfd8d8f46145462f4b1e7add'
+	'939f403a71b6e85261d09fc3412269ee')
+
 
 
 build() {
