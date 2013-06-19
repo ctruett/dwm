@@ -61,39 +61,44 @@ static const char *vim[]           = { "urxvt", "-e", "vim", NULL };
 static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-geometry", "90x30", "-e", "vim", "/home/chris/Documents/todo.chklst", NULL };
 
 static Key keys[] = {
-	/* modifier,                           key,        function,          argument,                 */
-	{ MODKEY,                              XK_j,       focusstack,        {.i = +1 } },
-	{ MODKEY,                              XK_k,       focusstack,        {.i = -1 } },
-	{ MODKEY|ShiftMask,                    XK_j,       pushdown,          {0} },
-	{ MODKEY|ShiftMask,                    XK_k,       pushup,            {0} },
-	{ MODKEY|ShiftMask,                    XK_equal,   incnmaster,        {.i = +1 } },
-	{ MODKEY|ShiftMask,                    XK_minus,   incnmaster,        {.i = -1 } },
+	/* modifier,                     key,        function,        argument,                 */
+	{ MODKEY,                        XK_j,       focusstack,      {.i = +1 } },             
+	{ MODKEY,                        XK_k,       focusstack,      {.i = -1 } },             
+	{ MODKEY|ShiftMask,              XK_j,       pushdown,        {0} },                    
+	{ MODKEY|ShiftMask,              XK_k,       pushup,          {0} },                    
+	{ MODKEY|ShiftMask,              XK_equal,   incnmaster,      {.i = +1 } },             
+	{ MODKEY|ShiftMask,              XK_minus,   incnmaster,      {.i = -1 } },             
 
-	{ MODKEY|ShiftMask,                    XK_c,       killclient,        {0} },
-	{ MODKEY|ControlMask|ShiftMask,        XK_q,       quit,              {0} },
+	{ MODKEY|ShiftMask,              XK_c,       killclient,      {0} },                    
+	{ MODKEY|ControlMask|ShiftMask,  XK_q,       quit,            {0} },                    
 
-	{ MODKEY,                              XK_Tab,     view,              {0} },
-	// { MODKEY,                              XK_f,       togglemax,         {0} },
-	// { MODKEY,                              XK_c,       centerwindow,      {0} },
-	{ MODKEY,                              XK_b,       setlayout,         {.v = &layouts[0]} },
-	{ MODKEY,                              XK_t,       setlayout,         {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[2]} },
-	// { MODKEY,                              XK_b,       setlayout,         {.v = &layouts[1]} },
-	// { MODKEY,                              XK_f,       setlayout,         {.v = &layouts[3]} },
+	{ MODKEY,                        XK_Tab,     view,            {0} },                    
+	// { MODKEY,                     XK_f,       togglemax,       {0} },                    
+	// { MODKEY,                     XK_c,       centerwindow,    {0} },                    
+	{ MODKEY,                        XK_b,       setlayout,       {.v = &layouts[0]} },     
+	{ MODKEY,                        XK_t,       setlayout,       {.v = &layouts[1]} },     
+	{ MODKEY|ShiftMask,              XK_Return,  setlayout,       {.v = &layouts[2]} },     
+	// { MODKEY,                     XK_b,       setlayout,       {.v = &layouts[1]} },     
+	// { MODKEY,                     XK_f,       setlayout,       {.v = &layouts[3]} },     
 
-	{ MODKEY,                              XK_l,       setmfact,          {.f = +0.025} },
-	{ MODKEY,                              XK_h,       setmfact,          {.f = -0.025} },
+	{ MODKEY,                        XK_l,       setmfact,        {.f = +0.025} },          
+	{ MODKEY,                        XK_h,       setmfact,        {.f = -0.025} },          
 
-	{ MODKEY,                              XK_e,       spawn,             {.v = browse } },
-	{ MODKEY,                              XK_p,       spawn,             {.v = dmenucmd } },
-	{ MODKEY,                              XK_Return,  spawn,             {.v = termcmd } },
-	{ MODKEY,                              XK_v,       spawn,             {.v = vim } },
+	{ MODKEY,                        XK_e,       spawn,           {.v = browse } },         
+	{ MODKEY,                        XK_p,       spawn,           {.v = dmenucmd } },       
+	{ MODKEY,                        XK_Return,  spawn,           {.v = termcmd } },        
+	{ MODKEY,                        XK_v,       spawn,           {.v = vim } },            
 
-	{ MODKEY|ControlMask,                  XK_grave,   spawn,             {.v = scratchpadcmd } },
-	{ MODKEY,                              XK_grave,   togglescratch,     {.v = scratchpadcmd } },
+	{ MODKEY|ControlMask,            XK_grave,   spawn,           {.v = scratchpadcmd } },  
+	{ MODKEY,                        XK_grave,   togglescratch,   {.v = scratchpadcmd } },  
 
-	{ MODKEY|ShiftMask,                    XK_space,   togglefloating,    {0} },
-	{ MODKEY,                              XK_m,       zoom,              {0} },
+	{ MODKEY|ShiftMask,              XK_space,   togglefloating,  {0} },                    
+	{ MODKEY,                        XK_m,       zoom,            {0} },                    
+
+	{ MODKEY,                        XK_comma,   focusmon,        {.i = -1 } },             
+	{ MODKEY,                        XK_period,  focusmon,        {.i = +1 } },             
+	{ MODKEY|ShiftMask,              XK_comma,   tagmon,          {.i = -1 } },             
+	{ MODKEY|ShiftMask,              XK_period,  tagmon,          {.i = +1 } },             
 
 	{ MODKEY|ShiftMask,                    XK_0,       tag,               {.ui = ~0 } },
 		TAGKEYS(                             XK_1,       0)
