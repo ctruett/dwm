@@ -38,8 +38,8 @@ static const Bool clicktofocus  = True;  /* Change focus only on click */
 #include "bstack.c"
 static const Layout layouts[] = {
 	{ "TTT",      bstack }, 
+	{ "[]|",      tile },
 	{ "[ ]",      monocle },
-	{ "|||",      tcl },
 	{ "><>",      NULL },
 };
 
@@ -76,8 +76,8 @@ static Key keys[] = {
 	// { MODKEY,                              XK_f,       togglemax,         {0} },
 	// { MODKEY,                              XK_c,       centerwindow,      {0} },
 	{ MODKEY,                              XK_t,       setlayout,         {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,                    XK_t,       setlayout,         {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,                    XK_t,       setlayout,         {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,                    XK_Return,  setlayout,         {.v = &layouts[2]} },
 	// { MODKEY,                              XK_b,       setlayout,         {.v = &layouts[1]} },
 	// { MODKEY,                              XK_f,       setlayout,         {.v = &layouts[3]} },
 
