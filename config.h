@@ -10,7 +10,7 @@ static const char selbgcolor[]      = "#080808";
 static const char selfgcolor[]      = "#ffffff";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 3;
+static const unsigned int gappx     = 0;
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
@@ -19,8 +19,8 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	// { NULL,           NULL,         NULL,       0,     True,   -1 },
-	{ "NULL",         "Dialog",     NULL,       0,     True,   -1 },
+	{ NULL,           NULL,         NULL,       0,     False,   -1 },
+	{ NULL,           "VirtualBox", NULL,       0,     False,   -1 },
 	// { "Firefox",      "Navigator",  NULL,       1<<1,  False,  -1 },
 	// { "Firefox",      "DTA",        NULL,       1<<1,  False,  -1 },
 	// { "Qjackctl",     NULL,         NULL,       0,     True,   -1 },
@@ -32,15 +32,15 @@ static const Rule rules[] = {
 static const float mfact        = 0.7;   /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;     /* number of clients in master area */
 static const Bool resizehints   = False; /* True means respect size hints in tiled resizals */
-static const Bool clicktofocus  = True;  /* Change focus only on click */
+static const Bool clicktofocus  = False; /* Change focus only on click */
 
 #include "tcl.h"
 #include "bstack.c"
 static const Layout layouts[] = {
-	{ "TTT",      bstack }, 
-	{ "[]|",      tile },
+	// { "><>",      NULL },
 	{ "[ ]",      monocle },
-	{ "><>",      NULL },
+	{ "[]|",      tile },
+	{ "TTT",      bstack }, 
 };
 
 /* key definitions */
@@ -57,7 +57,7 @@ static const char scratchpadname[] = "TODO";
 static const char *dmenucmd[]      = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]       = { "urxvt", NULL };
 static const char *browse[]        = { "thunar", NULL };
-static const char *vim[]           = { "urxvt", "-e", "vim", NULL };
+static const char *vim[]           = { "gvim", "-i", "NONE", NULL };
 static const char *scratchpadcmd[] = { "urxvt", "-title", scratchpadname, "-geometry", "90x30", "-e", "vim", "/home/chris/Documents/todo.chklst", NULL };
 
 static Key keys[] = {
@@ -75,10 +75,10 @@ static Key keys[] = {
 	{ MODKEY,                        XK_Tab,     view,            {0} },                    
 	// { MODKEY,                     XK_f,       togglemax,       {0} },                    
 	// { MODKEY,                     XK_c,       centerwindow,    {0} },                    
-	{ MODKEY,                        XK_b,       setlayout,       {.v = &layouts[0]} },     
+	// { MODKEY|ShiftMask,              XK_space,   setlayout,       {.v = &layouts[0]} },     
+	{ MODKEY|ShiftMask,              XK_Return,  setlayout,       {.v = &layouts[0]} },     
 	{ MODKEY,                        XK_t,       setlayout,       {.v = &layouts[1]} },     
-	{ MODKEY|ShiftMask,              XK_Return,  setlayout,       {.v = &layouts[2]} },     
-	// { MODKEY,                     XK_b,       setlayout,       {.v = &layouts[1]} },     
+	{ MODKEY,                        XK_b,       setlayout,       {.v = &layouts[2]} },     
 	// { MODKEY,                     XK_f,       setlayout,       {.v = &layouts[3]} },     
 
 	{ MODKEY,                        XK_l,       setmfact,        {.f = +0.025} },          
